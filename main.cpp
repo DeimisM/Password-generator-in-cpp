@@ -9,10 +9,34 @@ using namespace std;
 
 int generator ()
 {
-    cout << "\n\nWelcome to the generator\n\n";
+    int passwdLength = 0;
 
+    cout << "\n\nWelcome to the generator\n";
 
+    while (true)
+    {
+        cout << "\n\nPlease type the desired length of your generated password:\n\n";
+        cin >> passwdLength;
 
+        if (cin.fail())
+        {
+            cin.clear();                            // clear the fail state
+            cin.ignore(1000, '\n');                 // discard the invalid input
+            cout << "\nInvalid input. Please enter a number.\n";
+            continue;                               // go back to the top of the loop
+        }
+
+        cout << passwdLength;
+
+        if (passwdLength <= 0)
+        {
+            cout << "\nPlease enter a number greater than 0\n";
+            continue;
+        }
+
+        // if input is valid, break the loop
+        break;
+    }
     return 0;
 }
 
@@ -25,7 +49,7 @@ int main ()
     cout << "Would you like to start generating passwords? (Y/n)\n\n";
 
     //cin >> yesOrNo;
-    getline(cin, yesOrNo);  // doesnt wait for input and takes the entire line
+    getline(cin, yesOrNo);  // doesnt wait for input and takes the entire line after Enter
 
 
                                                     // if input == y, then passwd generator is started
